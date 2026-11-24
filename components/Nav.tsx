@@ -74,7 +74,7 @@ export default function Nav() {
           </Link>
           <nav aria-label="Main" className="hidden items-center gap-0.5 lg:flex">
             {LINKS.map(([href, label]) => {
-              const active = href.startsWith("/models") ? path.startsWith("/models") : path === href;
+              const active = href.startsWith("/models") ? path.startsWith("/models") : path.replace(/\/$/, "") === href; // static export prerenders "/finance/", the browser reports "/finance"
               return (
                 <Link key={href} href={href} aria-current={active ? "page" : undefined}
                   className={`relative rounded-full px-3.5 py-2 text-sm transition-colors duration-200 ${active ? "text-white" : "text-white/70 hover:text-white"}`}>

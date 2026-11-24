@@ -8,3 +8,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "/book", "/compare", "/lease", "/finance", "/dealers", "/about", "/support", ...MODELS.map((m) => `/models/${m.id}`)];
   return pages.map((p) => ({ url: BASE + p, lastModified: new Date() }));
 }
+
+export const dynamic = "force-static";

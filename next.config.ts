@@ -30,9 +30,14 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
-  },
+  // Static export for GitHub Pages at nrparthi.github.io/ozotec. Assets sit in public/ (not public/ozotec)
+  // so the "/ozotec/..." paths in code resolve under the basePath. Drop basePath when a custom domain is set.
+  output: "export",
+  basePath: "/ozotec",
+  trailingSlash: true, // without it the home prefetch requests /ozotec.txt, which 404s under a basePath
+  images: { unoptimized: true },
+  // shortcut: GitHub Pages can't send response headers, so these only apply in dev; move to a host with header support (or a CDN) to enforce them live.
+  ...(dev ? { async headers() { return [{ source: "/:path*", headers: securityHeaders }]; } } : {}),
 };
 
 export default nextConfig;

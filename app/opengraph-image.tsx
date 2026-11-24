@@ -8,7 +8,7 @@ export const contentType = "image/png";
 
 // shortcut: the share-image font has no ₹ glyph, so "Rs" is used here; bundle a TTF with ₹ if the brand wants the symbol.
 export default async function OG() {
-  const bike = await readFile(path.join(process.cwd(), "public/ozotec/cut/flio-neo.png"));
+  const bike = await readFile(path.join(process.cwd(), "public/cut/flio-neo.png"));
   const src = `data:image/png;base64,${bike.toString("base64")}`;
   return new ImageResponse(
     (
@@ -24,3 +24,5 @@ export default async function OG() {
     size,
   );
 }
+
+export const dynamic = "force-static";

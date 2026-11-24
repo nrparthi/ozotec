@@ -5,14 +5,16 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Ozotec EV",
     short_name: "Ozotec",
     description: "Book, finance or lease an Ozotec electric scooter or MUV.",
-    start_url: "/",
+    start_url: "./",
     display: "standalone",
     background_color: "#000814",
     theme_color: "#01163b",
-    icons: [{ src: "/icon", sizes: "512x512", type: "image/png", purpose: "any" }],
+    icons: [{ src: "icon.png", sizes: "512x512", type: "image/png", purpose: "any" }],
     shortcuts: [
-      { name: "Book a test ride", url: "/book?mode=test" },
-      { name: "Lease plans", url: "/lease" },
+      { name: "Book a test ride", url: "book?mode=test" },
+      { name: "Lease plans", url: "lease" },
     ],
   };
 }
+
+export const dynamic = "force-static";
